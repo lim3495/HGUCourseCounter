@@ -36,12 +36,13 @@ public class Student {
 	
 	public int getNumCourseInNthSementer(int semester) {
 		
-		int semesterCount=1;
+		int semesterCount=0;
 		String yearAndSemester=null;
 		
 		for(String str : semestersByYearAndSemester.keySet()) {
 			if(semestersByYearAndSemester.get(str).equals(semester)) {
 				yearAndSemester = str;
+				System.out.println(semestersByYearAndSemester.get(str));
 				break;
 			}
 			

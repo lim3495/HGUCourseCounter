@@ -99,8 +99,6 @@ public class HGUCoursePatternAnalyzer {
 		
 		String first , last;
 		ArrayList<String> all = new ArrayList<String>();
-		
-		all.add("result");
 		all.add("StudentID, TotalNumberOfSemestersRegistered, Semester, NumCoursesTakenInTheSemester");
 		
 		for (Student sort :sortedStudents.values()) {
