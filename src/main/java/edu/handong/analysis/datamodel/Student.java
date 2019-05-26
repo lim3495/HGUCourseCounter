@@ -42,7 +42,7 @@ public class Student {
 		for(String str : semestersByYearAndSemester.keySet()) {
 			if(semestersByYearAndSemester.get(str).equals(semester)) {
 				yearAndSemester = str;
-				System.out.println(semestersByYearAndSemester.get(str));
+				//System.out.println(semestersByYearAndSemester.get(str));
 				break;
 			}
 			
