@@ -21,7 +21,7 @@ public class Student {
 		
 		coursesTaken.add(newRecord);
 		
-		if(!(semestersByYearAndSemester.containsKey(newRecord))) {
+		if(!(semestersByYearAndSemester.containsKey(newRecord.getYearTaken()))) {
 			
 			semestersByYearAndSemester.put(newRecord.getYearTaken(),semestersByYearAndSemester.size()+1 );
 		}
