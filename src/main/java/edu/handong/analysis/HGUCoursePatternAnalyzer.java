@@ -20,6 +20,7 @@ import edu.handong.analysis.utils.Utils;
 
 public class HGUCoursePatternAnalyzer {
 
+	
 	private HashMap<String,Student> students;
 	private ArrayList<Course> courses;
 	private String dataPath;// csv file to be analyzed
