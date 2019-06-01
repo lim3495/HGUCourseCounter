@@ -1,8 +1,11 @@
 package edu.handong.analysis.datamodel;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.io.FileReader;
+import java.util.ArrayList;
+
+import org.apache.commons.csv.CSVRecord;
 
 public class Course {
 	
@@ -16,21 +19,21 @@ public class Course {
 	private int yearTaken;
 	private int semesterCourseTaken;
 	
-	public Course(String line) {
+	public Course(CSVRecord line) {
 	
-		this.studentId =line.split(",")[0].trim();
-		this.yearMonthGraduated =line.split(",")[1].trim();
-		this.firstMajor =line.split(",")[2].trim();
-		this.secondMajor =line.split(",")[3].trim();
-		this.courseCode =line.split(",")[4].trim();
-		this.courseName =line.split(",")[5].trim();
-		this.courseCredit =line.split(",")[6].trim();
-		this.yearTaken =Integer.parseInt(line.split(",")[7].trim());
-		this.semesterCourseTaken = Integer.parseInt(line.split(",")[8].trim());
+		this.studentId =line.get(0).trim();
+		this.yearMonthGraduated =line.get(1).trim();
+		this.firstMajor =line.get(2).trim();
+		this.secondMajor =line.get(3).trim();
+		this.courseCode =line.get(4).trim();
+		this.courseName =line.get(5).trim();
+		this.courseCredit =line.get(6).trim();
+		this.yearTaken =Integer.parseInt(line.get(7).trim());
+		this.semesterCourseTaken = Integer.parseInt(line.get(8).trim());
 
 	}
 	
-	public String getYearTaken() {
+	public String getYearandSemesterTaken() {
 		
 		String yearReturn = Integer.toString(yearTaken) +"-"+ Integer.toString(semesterCourseTaken);
 		return yearReturn;
@@ -41,6 +44,16 @@ public class Course {
 		return this.studentId;
 	}
 	
+	public int getYearTaken() {
+		return this.yearTaken;
+	}
 	
+	public String getCourseCode() {
+		return this.courseCode;
+	}
+	
+	public String getCourseName() {
+		return this.courseName;
+	}
 	
 }

@@ -1,36 +1,32 @@
 package edu.handong.analysis.utils;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
+
 public class Utils {
 	
-	public static ArrayList<String> getLines(String file,boolean removeHeader){
+	public static ArrayList<CSVRecord> getLines(String file,boolean removeHeader){
 		
-		ArrayList<String> lines = new ArrayList<String>();
+		ArrayList<CSVRecord> lines = new ArrayList<CSVRecord>();
 		File dataFile = new File(file);
 		
 		try {
-			FileReader new_file = new FileReader(dataFile);
-			BufferedReader new_bff = new BufferedReader(new_file);
-			String line=null;
 			
-			while((line =new_bff.readLine())!= null) {
-				lines.add(line);
-			}
+			CSVParser parser = new CSVParser(new FileReader(dataFile), CSVFormat.DEFAULT.withHeader()); 
 			
-			if(removeHeader) {
-				lines.remove(0);
-			}
-			
-			new_bff.close();
-			
+	
+			for (CSVRecord record : parser) 
+				lines.add(record); 
+				
 		}catch (FileNotFoundException e) {
 			System.out.println("File is not exist");
             System.exit(0);
@@ -46,15 +42,15 @@ public class Utils {
 	}
 	
 	public static void writeAFile(ArrayList<String> lines, String targetFileName){
-	PrintWriter outputStream = null;
+		
+		PrintWriter outputStream = null;
 		
 		try {
 			File file = new File(targetFileName);
 			if (!file.exists()) {
 				file.getParentFile().mkdirs();
 			}
-			outputStream = new PrintWriter(file);
-			//System.out.println("test!");
+			outputStream = new PrintWriter(targetFileName);
 		} catch(FileNotFoundException e) {
 			System.out.println(e.getMessage());
 			System.exit(0);
@@ -66,4 +62,5 @@ public class Utils {
 		
 		outputStream.close();
 	}
+		
 }

@@ -21,9 +21,9 @@ public class Student {
 		
 		coursesTaken.add(newRecord);
 		
-		if(!(semestersByYearAndSemester.containsKey(newRecord.getYearTaken()))) {
+		if(!(semestersByYearAndSemester.containsKey(newRecord.getYearandSemesterTaken()))) {
 			
-			semestersByYearAndSemester.put(newRecord.getYearTaken(),semestersByYearAndSemester.size()+1 );
+			semestersByYearAndSemester.put(newRecord.getYearandSemesterTaken(),semestersByYearAndSemester.size()+1 );
 		}
 		
 	}
@@ -49,7 +49,7 @@ public class Student {
 		}
 		
 		for(Course crs : coursesTaken) {
-			if(crs.getYearTaken().equals(yearAndSemester)) {
+			if(crs.getYearandSemesterTaken().equals(yearAndSemester)) {
 				semesterCount++;
 			}
 		}
@@ -60,6 +60,34 @@ public class Student {
 	public String getStdId() {
 		
 		return this.studentId;
+	}
+	
+	public boolean yearCheck(String year) {
+		for(Course cs : this.coursesTaken) {
+			if(cs.getYearandSemesterTaken().equals(year)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int courseCheck(String year, String code) {
+		for(Course cs : this.coursesTaken) {
+			if(cs.getCourseCode().equals(code) && cs.getYearandSemesterTaken().equals(year))
+				return 1;
+		}
+		
+		return 0;
+	}
+	
+	public String courseName(String code) {
+		for(Course cs : this.coursesTaken) {
+			if(cs.getCourseCode().equals(code)) {
+				return cs.getCourseName();
+			}
+		}
+		
+		return null;
 	}
 
 }
