@@ -41,7 +41,7 @@ public class HGUCoursePatternAnalyzer {
 		
 		Options options = createOptions();
 		
-		//ArrayList<CSVRecord> lines = Utils.getLines(dataPath, true);
+		ArrayList<CSVRecord> lines = Utils.getLines(dataPath, true);
 	
 		
 		if(parseOption(options,args)) {
@@ -53,8 +53,7 @@ public class HGUCoursePatternAnalyzer {
 			}
 			
 			else if(analysis == 1) {
-				ArrayList<CSVRecord> lines = Utils.getLines(dataPath, true);
-				
+
 			try {
 				students = loadStudentCourseRecords(lines);
 				
@@ -74,7 +73,6 @@ public class HGUCoursePatternAnalyzer {
 			
 			else if(analysis == 2) {
 				
-				ArrayList<CSVRecord> lines = Utils.getLines(dataPath, true);
 				
 				if(courseCode == null) {
 					System.out.println("Error. input option -c");
