@@ -41,7 +41,6 @@ public class HGUCoursePatternAnalyzer {
 		
 		Options options = createOptions();
 		
-		ArrayList<CSVRecord> lines = Utils.getLines(dataPath, true);
 	
 		
 		if(parseOption(options,args)) {
@@ -55,6 +54,7 @@ public class HGUCoursePatternAnalyzer {
 			else if(analysis == 1) {
 
 			try {
+				ArrayList<CSVRecord> lines = Utils.getLines(dataPath, true);
 				students = loadStudentCourseRecords(lines);
 				
 				// To sort HashMap entries by key values so that we can save the results by student ids in ascending order.
@@ -81,6 +81,7 @@ public class HGUCoursePatternAnalyzer {
 				}
 				
 				try {
+					ArrayList<CSVRecord> lines = Utils.getLines(dataPath, true);
 					students = loadStudentCourseRecords(lines);
 					
 					// To sort HashMap entries by key values so that we can save the results by student ids in ascending order.
